@@ -6,7 +6,6 @@ const {
   describe("TodoList", function () {
     const TASK_CREATION_COST = ethers.parseEther("0.01");
   
-    // Fixture pour déployer le contrat et initialiser les comptes
     async function deployTodoListFixture() {
       const [owner, addr1] = await ethers.getSigners();
       const TodoList = await ethers.deployContract("TodoList");
@@ -26,7 +25,7 @@ const {
       const tasks = await todoList.readTask();
       expect(tasks.length).to.equal(1);
       expect(tasks[0].description).to.equal("Learn Solidity");
-      expect(tasks[0].state).to.equal(0); // TaskState.TODO
+      expect(tasks[0].state).to.equal(0);
     });
   
     it("Should not create a task without correct payment", async function () {
@@ -39,11 +38,11 @@ const {
     it("Should update an existing task", async function () {
       const { todoList } = await loadFixture(deployTodoListFixture);
       await todoList.createTask("Task 1", { value: TASK_CREATION_COST });
-      await todoList.updateTask(0, "Updated Task 1", 1); // TaskState.DOING
+      await todoList.updateTask(0, "Updated Task 1", 1);
   
       const tasks = await todoList.readTask();
       expect(tasks[0].description).to.equal("Updated Task 1");
-      expect(tasks[0].state).to.equal(1); // TaskState.DOING
+      expect(tasks[0].state).to.equal(1);
     });
   
     it("Should not update a non-existent task", async function () {
