@@ -63,8 +63,6 @@ const {
       const { myToken, owner } = await loadFixture(deployRCoinFixture);
       const burnAmount = ethers.parseEther("1000");
   
-      const ownerBalanceBefore = await myToken.balanceOf(owner.address);
-  
       await myToken.burn(burnAmount);
   
       const totalSupply = await myToken.totalSupply();
