@@ -52,7 +52,6 @@ describe("TodoList", function () {
         const tx = await todoList.connect(addr1).deleteTask(0);
         const receipt = await tx.wait();
     
-        // Vérifie et transforme les valeurs en BigInt uniquement si elles sont définies
         const gasUsed = receipt.gasUsed ? BigInt(receipt.gasUsed.toString()) : BigInt(0);
         const effectiveGasPrice = receipt.effectiveGasPrice ? BigInt(receipt.effectiveGasPrice.toString()) : BigInt(0);
         const gasCost = gasUsed * effectiveGasPrice;
