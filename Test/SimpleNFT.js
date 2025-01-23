@@ -6,7 +6,6 @@ const {
   describe("SimpleNFT", function () {
     const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
   
-    // Définition de la fixture
     async function deploySimpleNFTFixture() {
       const [owner, addr1, addr2] = await ethers.getSigners();
       const SimpleNFT = await ethers.deployContract("SimpleNFT", ["TestNFT", "TNFT"]);

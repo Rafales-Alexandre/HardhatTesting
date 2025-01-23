@@ -6,7 +6,6 @@ const {
   describe("RCoin", function () {
     const initialSupply = ethers.parseEther("10000");
   
-    // Fixture pour déployer le contrat et initialiser les comptes
     async function deployRCoinFixture() {
       const [owner, addr1, addr2] = await ethers.getSigners();
       const MyToken = await ethers.deployContract("MyToken", ["Rafales Coin", "RC", 10000]);
