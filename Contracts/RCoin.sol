@@ -19,7 +19,7 @@ contract MyToken is ERC20, Ownable {
         ERC20(name, symbol)
         Ownable(msg.sender) // Fournir l'adresse initiale du propriétaire ici
     {
-        _mint(msg.sender, initialSupply * 10 ** decimals());
+        _mint(msg.sender, initialSupply);
     }
 
     /**
