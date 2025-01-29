@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.28;
 
-import {Test, Vm} from "forge-std/Test.sol"; // Ajout de Vm pour makeAddr()
+import {Test, Vm} from "forge-std/Test.sol"; 
 import "../Contracts/SimpleNFT.sol";
-import {console} from "forge-std/console.sol"; // Nécessaire pour `console.log`
+import {console} from "forge-std/console.sol"; 
 
 contract SimpleNFTTest is Test {
     SimpleNFT private simpleNFT;
