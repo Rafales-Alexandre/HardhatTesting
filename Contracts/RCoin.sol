@@ -9,6 +9,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
  * @dev An ERC20 token implementation with additional functionalities using OpenZeppelin library.
  */
 contract MyToken is ERC20, Ownable {
+
+    event SupplyInitialized(uint256 initialSupply);
+    event Minted(address indexed to, uint256 amount, uint256 newTotalSupply);
     /**
      * @dev Constructor that gives msg.sender all of the initial supply.
      * @param name The name of the token.
@@ -17,11 +20,12 @@ contract MyToken is ERC20, Ownable {
      */
     constructor(string memory name, string memory symbol, uint256 initialSupply)
         ERC20(name, symbol)
-        Ownable(msg.sender) // Fournir l'adresse initiale du propriétaire ici
+        Ownable(msg.sender) 
     {
+        emit SupplyInitialized(initialSupply);
         _mint(msg.sender, initialSupply);
     }
-
+    
     /**
      * @dev Burns a specific amount of tokens from the caller's account.
      * @param amount The amount of tokens to burn.
@@ -36,6 +40,8 @@ contract MyToken is ERC20, Ownable {
      * @param amount The amount of tokens to mint.
      */
     function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
-    }
+    emit Minted(to, amount, totalSupply()); // Avant le mint
+    _mint(to, amount);
+    emit Minted(to, amount, totalSupply()); // Après le mint
+}
 }

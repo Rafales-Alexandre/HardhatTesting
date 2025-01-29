@@ -1,11 +1,9 @@
 const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
-const TokenModule = buildModule("TokenModule", (m) => {
-    const token = m.contract("SimpleNFT", ["MyNFT", "MNFT"], {
-        gasLimit: 50000, // Augmentez la limite de gaz si nécessaire
-    });
+const TodoListModule = buildModule("TodoListModule", (m) => {
+    const todoList = m.contract("TodoList");
 
-    return { token };
+    return { todoList };
 });
 
-module.exports = TokenModule;
+module.exports = TodoListModule;
